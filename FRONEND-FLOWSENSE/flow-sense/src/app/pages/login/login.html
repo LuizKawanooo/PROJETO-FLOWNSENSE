@@ -1,0 +1,55 @@
+<main class="tela-login-fundo">
+  <div class="gotas-fundo" aria-hidden="true">
+    <span class="gota gota-1"></span>
+    <span class="gota gota-2"></span>
+    <span class="gota gota-3"></span>
+    <span class="gota gota-4"></span>
+    <span class="gota gota-5"></span>
+    <span class="gota gota-6"></span>
+    <span class="gota gota-7"></span>
+    <span class="gota gota-8"></span>
+  </div>
+
+  <div class="cartao-login">
+    <div class="cabecalho-texto">
+      <h1>Bem-vindo(a) de volta</h1>
+      <p>Monitore seu fluxo de agua em tempo real</p>
+    </div>
+
+    <form class="formulario" (submit)="aoLogar()">
+      <input
+        type="email"
+        name="email"
+        placeholder="E-mail"
+        class="campo-input"
+        [(ngModel)]="loginData.email"
+      />
+
+      <div class="campo-senha">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          name="password"
+          placeholder="Senha"
+          class="campo-input"
+          [(ngModel)]="loginData.password"
+        />
+        <button
+          type="button"
+          class="icone-olho"
+          (click)="togglePasswordVisibility()"
+          aria-label="Mostrar ou esconder senha"
+        >
+          olho
+        </button>
+      </div>
+
+      <p *ngIf="errorMessage" class="mensagem-erro">
+        {{ errorMessage }}
+      </p>
+
+      <button type="submit" class="btn-primario" [disabled]="isLoading">
+        {{ isLoading ? 'Entrando...' : 'Entrar' }}
+      </button>
+    </form>
+  </div>
+</main>

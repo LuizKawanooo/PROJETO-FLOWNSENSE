@@ -1,0 +1,32 @@
+<header class="main-header">
+  <nav id="principal-nav" class="navbar">
+    <a
+      [routerLink]="isAuthenticated() ? '/' : '/login'"
+      class="logo-container"
+    >
+      <img
+        src="img/logos/flow_sense.png"
+        alt="Logo Flow Sense"
+        class="logo-img"
+      />
+      <span id="nav-text">Flow Sense</span>
+    </a>
+
+    <ul class="nav-links">
+      <li *ngIf="isAuthenticated()">
+        <a routerLink="/">Home</a>
+      </li>
+      <li *ngIf="isAuthenticated()">
+        <a routerLink="/historico">Historico de Uso</a>
+      </li>
+      <li *ngIf="isAuthenticated()">
+        <a routerLink="/quem-somos">Quem Somos</a>
+      </li>
+      <li *ngIf="isAuthenticated()">
+        <button type="button" class="login_botao" (click)="logout()">
+          Sair
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>

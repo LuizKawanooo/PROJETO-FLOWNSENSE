@@ -1,0 +1,231 @@
+<div class="header">
+
+  <div class="container">
+
+    <h1>
+      Flow-Sense
+    </h1>
+
+    <p>
+      Dashboard de consumo mensal de água
+    </p>
+
+  </div>
+
+</div>
+
+<div class="container">
+
+  <!-- DISPOSITIVOS -->
+
+  <div class="card">
+
+    <h2>
+      Dispositivos
+    </h2>
+
+    <label>
+      Sensor
+    </label>
+
+    <select
+      [ngModel]="sensorSelecionado"
+      (ngModelChange)="onSensorChange($event)"
+    >
+
+      <option value="">
+        Selecione um sensor
+      </option>
+
+      <option
+        *ngFor="let device of listaSensores"
+
+        [value]="device.id"
+      >
+
+        {{ device.name }}
+        -
+        ID {{ device.id }}
+        -
+        {{ device.online ? 'Online' : 'Offline' }}
+
+      </option>
+
+    </select>
+
+    <div class="actions">
+
+      <button
+        type="button"
+        (click)="carregarSensores()"
+        [disabled]="carregandoSensores"
+      >
+
+        {{ carregandoSensores ? 'Carregando sensores...' : 'Carregar sensores' }}
+
+      </button>
+
+
+
+      <button
+        type="button"
+        (click)="carregarGrafico()"
+        [disabled]="carregandoGrafico || carregandoSensores"
+      >
+
+        {{ carregandoGrafico || carregandoSensores ? 'Carregando grafico...' : 'Carregar grafico' }}
+
+      </button>
+   
+    </div>
+
+    <div
+      class="message error"
+
+      *ngIf="deviceMessage"
+    >
+
+      {{ deviceMessage }}
+
+    </div>
+
+  </div>
+
+  <!-- RESUMO -->
+
+  <div class="card">
+
+    <h2>
+      Resumo
+    </h2>
+
+    <div class="summary">
+
+      <div class="summary-box">
+
+        <span>
+          Sensor ID
+        </span>
+
+        <strong>
+          {{ sensorIdResumo }}
+        </strong>
+
+      </div>
+
+      <div class="summary-box">
+
+        <span>
+          Consumo mensal
+        </span>
+
+        <strong>
+          {{ monthlyTotal }} L
+        </strong>
+
+      </div>
+
+      <div class="summary-box">
+
+        <span>
+          Dias no gráfico
+        </span>
+
+        <strong>
+          {{ totalDias }}
+        </strong>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- GRAFICO -->
+
+  <div class="card">
+
+    <h2>
+      Gráfico diário do mês
+    </h2>
+
+    <div
+      class="chart"
+
+      *ngIf="dadosGrafico.length > 0"
+    >
+
+      <div
+        class="bar-wrapper"
+
+        *ngFor="let item of dadosGrafico"
+      >
+
+        <div class="bar-area">
+
+          <div
+            class="bar"
+            role="button"
+            tabindex="0"
+            (click)="mostrarConsumoBarra(item)"
+            (keyup.enter)="mostrarConsumoBarra(item)"
+
+            [style.height.%]="
+              calcularAltura(
+                item.litros
+              )
+            "
+
+            [title]="
+              'Dia ' +
+              item.dia +
+              ': ' +
+              item.litros +
+              'L'
+            "
+          ></div>
+
+        </div>
+
+        <div class="day">
+
+          {{ item.dia }}
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div
+      class="message success"
+      *ngIf="barInfoMessage"
+    >
+
+      {{ barInfoMessage }}
+
+    </div>
+
+    <div
+      class="empty"
+
+      *ngIf="dadosGrafico.length === 0"
+    >
+
+      Nenhum consumo registrado neste mês.
+
+    </div>
+
+    <div
+      class="message error"
+
+      *ngIf="chartMessage"
+    >
+
+      {{ chartMessage }}
+
+    </div>
+
+  </div>
+
+</div>

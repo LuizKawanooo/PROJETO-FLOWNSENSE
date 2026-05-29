@@ -1,0 +1,344 @@
+.tela-login-fundo {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.45), transparent 24%),
+    rgb(218 231 250);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  padding: 110px 20px 40px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.gotas-fundo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gota {
+  position: absolute;
+  display: block;
+  width: var(--gota-tamanho);
+  height: var(--gota-tamanho);
+  background-color: transparent;
+  border-radius: 51% 49% 62% 38% / 25% 57% 43% 75%;
+  box-shadow:
+    inset 4px 4px 7px rgba(0, 0, 0, 0.12),
+    7px 9px 18px rgba(0, 0, 0, 0.22),
+    inset -5px -5px 8px rgba(255, 255, 255, 0.52);
+  opacity: var(--gota-opacidade);
+  transform: rotate(var(--gota-rotacao));
+}
+
+.gota::after,
+.gota::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.72);
+}
+
+.gota::after {
+  width: 12%;
+  height: 12%;
+  top: 20%;
+  left: 22%;
+  border-radius: 80% 20% 91% 9% / 48% 67% 33% 52%;
+}
+
+.gota::before {
+  width: 22%;
+  height: 22%;
+  top: 17%;
+  left: 36%;
+  border-radius: 48% 52% 45% 55% / 48% 67% 33% 52%;
+}
+
+.gota-1 {
+  --gota-tamanho: 74px;
+  --gota-opacidade: 0.5;
+  --gota-rotacao: -16deg;
+  top: 16%;
+  left: 8%;
+}
+
+.gota-2 {
+  --gota-tamanho: 46px;
+  --gota-opacidade: 0.42;
+  --gota-rotacao: 24deg;
+  top: 12%;
+  right: 15%;
+}
+
+.gota-3 {
+  --gota-tamanho: 62px;
+  --gota-opacidade: 0.36;
+  --gota-rotacao: 9deg;
+  bottom: 18%;
+  left: 14%;
+}
+
+.gota-4 {
+  --gota-tamanho: 92px;
+  --gota-opacidade: 0.28;
+  --gota-rotacao: -34deg;
+  right: 8%;
+  bottom: 12%;
+}
+
+.gota-5 {
+  --gota-tamanho: 36px;
+  --gota-opacidade: 0.38;
+  --gota-rotacao: 18deg;
+  top: 46%;
+  left: 5%;
+}
+
+.gota-6 {
+  --gota-tamanho: 54px;
+  --gota-opacidade: 0.32;
+  --gota-rotacao: -8deg;
+  top: 38%;
+  right: 7%;
+}
+
+.gota-7 {
+  --gota-tamanho: 30px;
+  --gota-opacidade: 0.34;
+  --gota-rotacao: 31deg;
+  bottom: 8%;
+  left: 42%;
+}
+
+.gota-8 {
+  --gota-tamanho: 40px;
+  --gota-opacidade: 0.3;
+  --gota-rotacao: -22deg;
+  top: 8%;
+  left: 48%;
+}
+
+.cartao-login {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 460px;
+  background: rgba(28, 58, 255, 0.95);
+  border-radius: 28px;
+  padding: 40px 35px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  box-sizing: border-box;
+}
+
+.cartao-login .cabecalho-texto {
+  text-align: center;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.cartao-login .cabecalho-texto h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.cartao-login .cabecalho-texto p {
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.cartao-login .formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cartao-login .formulario .campo-input {
+  width: 100%;
+  background: white;
+  border: none;
+  outline: none;
+  padding: 15px 18px;
+  border-radius: 999px;
+  color: #050a30;
+  font-size: 15px;
+  transition: 0.25s;
+  box-sizing: border-box;
+}
+
+.cartao-login .formulario .campo-input::placeholder {
+  color: #7a7a7a;
+}
+
+.cartao-login .formulario .campo-input:focus {
+  transform: translateY(-1px);
+}
+
+.cartao-login .formulario .campo-senha {
+  position: relative;
+}
+
+.cartao-login .formulario .campo-senha .campo-input {
+  padding-right: 46px;
+}
+
+.cartao-login .formulario .campo-senha .icone-olho {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #0d21fc;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0.7;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cartao-login .formulario .campo-senha .icone-olho:hover {
+  opacity: 1;
+}
+
+.link-esqueceu-senha {
+  display: inline-block;
+  align-self: flex-end;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: -4px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.link-esqueceu-senha:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.mensagem-erro {
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  margin: -4px 0 0;
+  text-align: center;
+}
+
+.cartao-login .formulario button {
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+.cartao-login .formulario .btn-primario,
+.cartao-login .formulario .btn-cadastrar-alternativo {
+  background: white;
+  color: #0d21fc;
+  border: none;
+}
+
+.cartao-login .formulario .btn-primario:hover,
+.cartao-login .formulario .btn-cadastrar-alternativo:hover {
+  transform: translateY(-2px);
+}
+
+.cartao-login .formulario .btn-primario:disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
+  transform: none;
+}
+
+.cartao-login .formulario .btn-secundario {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cartao-login .formulario .btn-secundario:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* tablet */
+@media (max-width: 768px) {
+  .tela-login-fundo {
+    padding: 95px 18px 32px;
+  }
+
+  .cartao-login {
+    max-width: 430px;
+    padding: 34px 28px;
+  }
+
+  .cartao-login .cabecalho-texto h1 {
+    font-size: 27px;
+  }
+}
+
+/* celular */
+@media (max-width: 520px) {
+  .tela-login-fundo {
+    padding: 85px 14px 24px;
+    align-items: flex-start;
+  }
+
+  .cartao-login {
+    max-width: 100%;
+    padding: 28px 20px;
+    border-radius: 22px;
+  }
+
+  .cartao-login .cabecalho-texto {
+    margin-bottom: 20px;
+  }
+
+  .cartao-login .cabecalho-texto h1 {
+    font-size: 23px;
+  }
+
+  .cartao-login .cabecalho-texto p {
+    font-size: 13px;
+  }
+
+  .cartao-login .formulario {
+    gap: 14px;
+  }
+
+  .cartao-login .formulario .campo-input,
+  .cartao-login .formulario button {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+
+  .link-esqueceu-senha {
+    font-size: 12px;
+  }
+}
+
+/* celulares pequenos */
+@media (max-width: 360px) {
+  .cartao-login {
+    padding: 24px 16px;
+  }
+
+  .cartao-login .cabecalho-texto h1 {
+    font-size: 20px;
+  }
+}

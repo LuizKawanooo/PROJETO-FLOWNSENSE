@@ -1,0 +1,357 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-header {
+    background-color: #0D21FC;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+#principal-nav {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    padding: 0 40px; 
+    height: 80px;
+    flex-wrap: wrap;
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none; 
+    gap: 15px;            
+}
+
+.logo-img {
+    height: 50px; 
+    width: auto;
+    display: block;
+}
+
+#nav-text {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;      
+    font-weight: 700;      
+    margin: 0;            
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px; 
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #b3c7ff;
+}
+
+.login_botao {
+    background-color: #609FFC;
+    color: white;
+    border: 2px solid white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+/* --- RESPONSIVIDADE DO MENU --- */
+
+@media (max-width: 768px) {
+    #navegacao-principal {
+        padding: 0 20px; 
+        height: auto;    
+        flex-wrap: wrap; 
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .nav-links {
+        display: none; 
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 15px; 
+    }
+
+    .logo-container {
+        margin-inline: auto; 
+    }
+
+    #texto_nav {
+        font-size: 18px; 
+    }
+}
+
+main {
+    background-color: #f8faff; 
+    min-height: 100vh;
+}
+
+.hero-section {
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+}
+
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+
+    font-size: 42px;
+    font-weight: 700;
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #050a30;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-primary {
+    align-items: flex-start;
+    background-color: #0D21FC;
+    color: white;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0514cc;
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    align-items: flex-start;
+    border: 2px solid #0D21FC;
+    color: #0D21FC;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(13, 33, 252, 0.05);
+    transform: translateY(-3px);
+}
+
+
+.features-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+    color: #050a30;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(13, 33, 252, 0.1);
+}
+
+.feature-card h3 {
+    margin: 20px 0 15px;
+    color: #0D21FC;
+}
+
+.feature-card p {
+    color: #666;
+    font-size: 15px;
+}
+
+
+@media (max-width: 968px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-image {
+        text-align: center;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+    }
+}
+
+.main-footer {
+    background-color: #0D21FC; 
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 50px; 
+}
+
+.footer-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    margin: 5px 0;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+/* --- SEÇÃO QUEM SOMOS --- */
+.team-section {
+    padding: 100px 0;
+    text-align: center;
+    background-color: transparent
+}
+
+
+.team-brand-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 70px; 
+}
+
+.team-main-logo {
+    width: 180px; 
+    height: auto;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 4px 6px rgba(13, 33, 252, 0.2)); 
+}
+
+.team-section h2 {
+    font-size: 28px;
+    color: #0D21FC;
+    font-weight: 700;
+    margin: 0;
+}
+
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    gap: 50px;       
+    max-width: 1200px;
+    margin-inline: auto; 
+}
+
+.member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 220px; 
+}
+
+.member-photo-wrapper {
+    position: relative;
+    padding: 10px; 
+    margin-bottom: 20px;
+}
+
+
+.member-photo {
+    width: 180px;  
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid #0D21FC; 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.member-photo:hover {
+    transform: translateY(-8px) scale(1.05); 
+    box-shadow: 0 20px 40px rgba(13, 33, 252, 0.25); 
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-card h3 {
+    font-size: 20px;
+    color: #050a30; 
+    font-weight: 600;
+    margin: 0;
+}
