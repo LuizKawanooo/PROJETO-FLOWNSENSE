@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onLogout()">
+        <app-icon slot="icon-only" name="log-out"></app-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <h1>Bem-vindo ao FlowSense!</h1>
+    <p>Você está logado com sucesso.</p>
+    
+    <!-- Botão de logout adicional no conteúdo -->
+    <ion-button expand="block" color="danger" (click)="onLogout()">
+      <app-icon name="log-out" slot="start"></app-icon>
+      Sair / Logout
+    </ion-button>
+  </div>
+</ion-content>

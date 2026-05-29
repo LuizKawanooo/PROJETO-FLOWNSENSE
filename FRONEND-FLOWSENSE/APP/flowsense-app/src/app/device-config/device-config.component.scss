@@ -1,0 +1,194 @@
+$config-blue: #0D6EFD;
+$config-dark: #063DB3;
+$success: #10b981;
+$error: #ef4444;
+$text-light: #ffffff;
+$text-dark: #1a1a1a;
+$gray: #6b7280;
+
+.config-container {
+  height: 100vh;
+  background: linear-gradient(135deg, $config-blue 0%, $config-dark 100%);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $text-light;
+  padding: 0 16px;
+
+  h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .back-btn {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.15);
+    color: $text-light;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+
+    app-icon {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  .spacer {
+    width: 42px;
+  }
+}
+
+.content {
+  flex: 1;
+  min-height: 0;
+  padding: 16px;
+  padding-bottom: calc(48px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.card {
+  background: $text-light;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+
+  h2 {
+    margin: 0 0 8px 0;
+    color: $config-blue;
+    font-size: 18px;
+  }
+
+  .description {
+    color: $gray;
+    font-size: 14px;
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+
+  label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: $text-dark;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    min-height: 76px;
+    resize: vertical;
+    background: #f9fafb;
+  }
+
+  &.disabled {
+    opacity: 0.75;
+  }
+}
+
+.wifi-box {
+  background: #eaf2ff;
+  color: $config-blue;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 14px;
+  margin: 12px 0;
+  line-height: 1.5;
+}
+
+.btn {
+  width: 100%;
+  min-height: 52px;
+  border: none;
+  border-radius: 14px;
+  padding: 0 16px;
+  margin-top: 16px;
+  color: $text-light;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.16);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    opacity 120ms ease;
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  &.btn-primary {
+    background: linear-gradient(135deg, #2563eb 0%, $config-blue 100%);
+  }
+
+  &.btn-success {
+    background: linear-gradient(135deg, $success 0%, #059669 100%);
+  }
+}
+
+.message {
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 600;
+
+  &.success {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  &.error {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+}

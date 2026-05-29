@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">FlowSense</string>
+
+    <string name="title_activity_main">FlowSense</string>
+
+    <string name="package_name">
+        fatec.flowsense.app
+    </string>
+
+    <string name="custom_url_scheme">
+        flowsense
+    </string>
+</resources>

@@ -1,0 +1,175 @@
+<div class="config-container">
+
+  <div class="header">
+
+    <button
+      type="button"
+      class="back-btn"
+      (click)="goBack()"
+      aria-label="Voltar"
+    >
+      <app-icon name="arrow-back"></app-icon>
+    </button>
+
+    <h1>Configurar Dispositivo</h1>
+
+    <div class="spacer"></div>
+
+  </div>
+
+  <div class="content">
+
+    <!-- REGISTRAR -->
+
+    <div class="card">
+
+      <h2>
+        1. Registrar sensor
+      </h2>
+
+      <p class="description">
+        Primeiro registre o dispositivo no backend.
+      </p>
+
+      <label for="sensorId">ID do Sensor</label>
+
+      <input
+        id="sensorId"
+        type="number"
+        inputmode="numeric"
+        [(ngModel)]="sensorId"
+      />
+
+      <label for="sensorName">Nome do Sensor</label>
+
+      <input
+        id="sensorName"
+        type="text"
+        autocomplete="off"
+        [(ngModel)]="sensorName"
+      />
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="registerDevice()"
+        [disabled]="loadingRegister"
+      >
+
+        {{
+          loadingRegister
+            ? 'Registrando...'
+            : 'Registrar dispositivo'
+        }}
+
+      </button>
+
+    </div>
+
+    <!-- CONFIG ESP32 -->
+
+    <div
+      class="card"
+      [class.disabled]="step < 2"
+    >
+
+      <h2>
+        2. Configurar ESP32
+      </h2>
+
+      <p class="description">
+        Conecte o celular no Wi-Fi:
+      </p>
+
+      <div class="wifi-box">
+
+        <strong>
+          Wi-Fi:
+        </strong>
+
+        FlowSense_Config
+
+        <br>
+
+        <strong>
+          Senha:
+        </strong>
+
+        12345678
+
+      </div>
+
+      <label for="wifiSsid">Wi-Fi residencial</label>
+
+      <input
+        id="wifiSsid"
+        type="text"
+        autocomplete="off"
+        [(ngModel)]="wifiSsid"
+      />
+
+      <label for="wifiPassword">Senha do Wi-Fi</label>
+
+      <input
+        id="wifiPassword"
+        type="password"
+        autocomplete="new-password"
+        [(ngModel)]="wifiPassword"
+      />
+
+      <label for="backendUrl">Backend URL</label>
+
+      <input
+        id="backendUrl"
+        type="text"
+        inputmode="url"
+        autocomplete="off"
+        [(ngModel)]="backendUrl"
+      />
+
+      <label for="deviceToken">Token do dispositivo</label>
+
+      <textarea
+        id="deviceToken"
+        readonly
+        [(ngModel)]="deviceToken"
+      ></textarea>
+
+      <button
+        type="button"
+        class="btn btn-success"
+        (click)="configureEsp32()"
+        [disabled]="loadingEsp32 || step < 2"
+      >
+
+        {{
+          loadingEsp32
+            ? 'Enviando...'
+            : 'Enviar configuração para o ESP32'
+        }}
+
+      </button>
+
+    </div>
+
+    <!-- SUCCESS -->
+
+    <div
+      class="message success"
+      *ngIf="successMessage"
+    >
+      {{ successMessage }}
+    </div>
+
+    <!-- ERROR -->
+
+    <div
+      class="message error"
+      *ngIf="errorMessage"
+    >
+      {{ errorMessage }}
+    </div>
+
+  </div>
+
+</div>

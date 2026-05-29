@@ -1,0 +1,98 @@
+<div class="signup-container">
+  <!-- Decorative Blobs -->
+  <div class="blob blob-top-left"></div>
+  <div class="blob blob-top"></div>
+  <div class="blob blob-bottom-left"></div>
+  
+  <!-- Decorative Circles -->
+  <div class="circle circle-1"></div>
+  <div class="circle circle-2"></div>
+
+  <!-- Main Content -->
+  <div class="signup-content">
+    <div class="content-box">
+      <h1 class="signup-title">Criar Conta</h1>
+      
+      <form [formGroup]="signupForm" class="signup-form">
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="error-banner">
+          {{ errorMessage }}
+        </div>
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-input"
+            placeholder="Nome Completo"
+            formControlName="fullName"
+            (input)="onPasswordChange()" />
+          <div class="input-underline"></div>
+          <span class="error-message" *ngIf="signupForm.get('fullName')?.invalid && signupForm.get('fullName')?.touched">
+            Name is required (min 2 characters)
+          </span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-input"
+            placeholder="Email"
+            formControlName="email"
+            (input)="onPasswordChange()" />
+          <div class="input-underline"></div>
+          <span class="error-message" *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+            Valid email is required
+          </span>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-input"
+            placeholder="Senha"
+            formControlName="password"
+            (input)="onPasswordChange()" />
+          <div class="input-underline"></div>
+          <span class="error-message" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+            Password must be at least 8 characters
+          </span>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-input"
+            placeholder="Confirmar Senha"
+            formControlName="confirmPassword"
+            (input)="onPasswordChange()" />
+          <div class="input-underline"></div>
+          <span class="error-message" *ngIf="!passwordsMatch">
+            Passwords do not match
+          </span>
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons-container">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="onSignup()"
+            [disabled]="signupForm.invalid || !passwordsMatch || isLoading">
+            {{ isLoading ? 'Criando Conta...' : 'Registrar-se' }}
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="goBack()"
+            [disabled]="isLoading">
+            Voltar para Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

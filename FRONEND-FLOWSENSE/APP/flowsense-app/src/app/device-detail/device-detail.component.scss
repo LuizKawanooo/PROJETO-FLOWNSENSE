@@ -1,0 +1,425 @@
+$primary-blue: #0D6EFD;
+$primary-dark: #063DB3;
+$secondary-blue: #0856D6;
+$success: #10b981;
+$error: #ef4444;
+$text-light: #FFFFFF;
+$text-dark: #1A1A1A;
+$gray: #6B7280;
+$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+.device-detail-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-height: 100vh;
+  background: linear-gradient(135deg, $primary-blue 0%, $secondary-blue 50%, $primary-dark 100%);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+
+  .back-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: $text-light;
+    font-size: 24px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: all 0.2s;
+
+    app-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: $text-light;
+    margin: 0;
+  }
+
+  .spacer {
+    width: 40px;
+  }
+}
+
+.content-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px;
+  padding-bottom: calc(150px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+.card {
+  background: $text-light;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: $card-shadow;
+  animation: slideUp 0.3s ease-out;
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.device-header-card {
+  text-align: center;
+  background: linear-gradient(135deg, $primary-blue 0%, $secondary-blue 100%);
+  color: $text-light;
+
+  .device-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    letter-spacing: 0.01em;
+  }
+
+  .device-id {
+    font-size: 12px;
+    opacity: 0.9;
+    margin: 0 0 8px 0;
+  }
+
+  .device-status {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+
+    &.online {
+      color: $success;
+    }
+  }
+}
+
+.flow-card {
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: $gray;
+    margin: 0 0 16px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    app-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .flow-rate-display {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+
+    .flow-value {
+      font-size: 48px;
+      font-weight: 700;
+      color: $primary-blue;
+      line-height: 1;
+    }
+
+    .flow-unit {
+      font-size: 18px;
+      color: $gray;
+      font-weight: 600;
+    }
+  }
+
+  .total-flow {
+    text-align: center;
+    font-size: 16px;
+    color: $gray;
+    margin: 0;
+  }
+}
+
+.stats-card {
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: $gray;
+    margin: 0 0 16px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    app-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+
+    .stat-item {
+      text-align: center;
+
+      .stat-label {
+        display: block;
+        font-size: 12px;
+        color: $gray;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .stat-value {
+        font-size: 24px;
+        font-weight: 700;
+        color: $primary-blue;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.valve-card {
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: $gray;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    app-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .valve-status {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: $gray;
+    margin: 0 0 16px 0;
+
+    &.open {
+      color: $success;
+    }
+  }
+
+  .valve-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.btn {
+  min-height: 50px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    opacity 120ms ease,
+    background 120ms ease;
+  text-transform: uppercase;
+  letter-spacing: 0;
+
+  app-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  &.btn-success {
+    background: $success;
+    color: $text-light;
+
+    &:active:not(:disabled) {
+      background: #059669;
+    }
+  }
+
+  &.btn-danger {
+    background: $error;
+    color: $text-light;
+
+    &:active:not(:disabled) {
+      background: #dc2626;
+    }
+  }
+
+  &.btn-toggle {
+    background: $primary-blue;
+    color: $text-light;
+
+    &:active:not(:disabled) {
+      background: $secondary-blue;
+    }
+  }
+
+  &.btn-block {
+    width: 100%;
+  }
+
+  &.btn-outline {
+    background: transparent;
+    border: 2px solid $text-light;
+    color: $text-light;
+
+    &:active:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 480px) {
+  .content-scroll {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .flow-card {
+    .flow-rate-display {
+      .flow-value {
+        font-size: 40px;
+      }
+
+      .flow-unit {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+
+.delete-device-btn {
+  margin-top: 10px;
+  margin-bottom: 12px;
+  min-height: 54px;
+  box-shadow: 0 8px 18px rgba(239, 68, 68, 0.28);
+
+  &.confirm-mode {
+    background: #991b1b;
+    box-shadow: 0 8px 18px rgba(153, 27, 27, 0.32);
+  }
+}
+
+.btn-cancel-delete {
+  margin-top: -6px;
+  margin-bottom: 12px;
+  min-height: 48px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 2px solid rgba(255, 255, 255, 0.42);
+  color: $text-light;
+}
+
+.btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: $text-light;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

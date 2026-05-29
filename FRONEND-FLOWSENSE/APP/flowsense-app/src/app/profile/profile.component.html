@@ -1,0 +1,81 @@
+<div class="profile-container">
+  <!-- Back button -->
+  <button class="back-btn" aria-label="Go back" (click)="onBackClick()">
+    <app-icon name="arrow-back"></app-icon>
+  </button>
+
+  <!-- Profile photo section -->
+  <div class="profile-photo-section">
+    <div class="photo-frame">
+      <img src="assets/icon/avatar.png" alt="Profile photo" class="profile-photo" />
+    </div>
+    <button class="change-photo-btn">
+      <app-icon name="camera"></app-icon>
+      Alterar foto
+    </button>
+  </div>
+
+  <!-- Personal Info Header -->
+  <div class="section-header">
+    <h2 class="section-title">Informações Pessoais</h2>
+    <button class="edit-btn" (click)="toggleEditMode()" [ngClass]="{ 'active': editMode }">
+      <app-icon [name]="editMode ? 'checkmark' : 'pencil'"></app-icon>
+    </button>
+  </div>
+
+  <!-- View Mode -->
+  <div class="form-section" *ngIf="!editMode">
+    <div class="form-group">
+      <label class="form-label">Nome</label>
+      <div class="form-value">{{ userName }}</div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Email</label>
+      <div class="form-value">{{ userEmail }}</div>
+    </div>
+  </div>
+
+  <!-- Edit Mode -->
+  <div class="form-section" *ngIf="editMode">
+    <div class="form-group">
+      <label class="form-label" for="nameInput">Nome</label>
+      <input
+        id="nameInput"
+        type="text"
+        class="form-input"
+        [(ngModel)]="userName"
+        placeholder="Seu nome"
+      />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="emailInput">Email</label>
+      <input
+        id="emailInput"
+        type="email"
+        class="form-input"
+        [(ngModel)]="userEmail"
+        placeholder="Seu email"
+      />
+    </div>
+
+    <!-- Edit Mode Buttons -->
+    <div class="button-group">
+      <button class="btn btn-save" (click)="saveChanges()" [disabled]="isLoading">
+        <app-icon name="checkmark"></app-icon>
+        {{ isLoading ? 'Salvando...' : 'Salvar Alterações' }}
+      </button>
+      <button class="btn btn-cancel" (click)="cancelEdit()" [disabled]="isLoading">
+        <app-icon name="close"></app-icon>
+        Cancelar
+      </button>
+    </div>
+  </div>
+
+  <!-- Logout Button -->
+  <button class="btn btn-logout" (click)="onLogout()">
+    <app-icon name="log-out"></app-icon>
+    Sair
+  </button>
+</div>

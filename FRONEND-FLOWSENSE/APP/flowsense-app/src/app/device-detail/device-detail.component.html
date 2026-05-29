@@ -1,0 +1,161 @@
+<div class="device-detail-container">
+  <!-- Header -->
+  <div class="header">
+    <button
+      type="button"
+      class="back-btn"
+      aria-label="Voltar"
+      (click)="goBack()"
+    >
+      <app-icon name="arrow-back"></app-icon>
+    </button>
+
+    <h1>Detalhes do Dispositivo</h1>
+
+    <div class="spacer"></div>
+  </div>
+
+  <!-- Scrollable content -->
+  <div class="content-scroll">
+
+    <!-- Device Header Card -->
+    <div class="card device-header-card">
+      <h2 class="device-name">{{ deviceName }}</h2>
+
+      <p class="device-id">
+        ID: {{ deviceId }}
+      </p>
+
+      <p class="device-status" [ngClass]="{ 'online': isOnline }">
+        Status: {{ isOnline ? 'Online' : 'Offline' }}
+      </p>
+    </div>
+
+    <!-- Real-time Flow Card -->
+    <div class="card flow-card">
+      <h3 class="card-title">
+        <app-icon name="water"></app-icon>
+        FLUXO EM TEMPO REAL
+      </h3>
+
+      <div class="flow-rate-display">
+        <span class="flow-value">{{ flowRate }}</span>
+        <span class="flow-unit">L/min</span>
+      </div>
+
+      <p class="total-flow">
+        Total: {{ totalFlow }} L
+      </p>
+    </div>
+
+    <!-- Statistics Card -->
+    <div class="card stats-card">
+      <h3 class="card-title">
+        <app-icon name="bar-chart"></app-icon>
+        ESTATÍSTICAS
+      </h3>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <label class="stat-label">Hoje</label>
+          <p class="stat-value">{{ dailyTotal }} L</p>
+        </div>
+
+        <div class="stat-item">
+          <label class="stat-label">Mensal</label>
+          <p class="stat-value">{{ monthlyTotal }} L</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Valve Control Card -->
+    <div class="card valve-card">
+      <h3 class="card-title">
+        <app-icon name="settings"></app-icon>
+        CONTROLE DA VÁLVULA
+      </h3>
+
+      <p class="valve-status" [ngClass]="{ 'open': valveOpen }">
+        Estado: {{ valveOpen ? 'ABERTA' : 'FECHADA' }}
+      </p>
+
+      <div class="valve-controls">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="openValve()"
+        >
+          <app-icon name="chevron-up"></app-icon>
+          ABRIR
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="closeValve()"
+        >
+          <app-icon name="chevron-down"></app-icon>
+          FECHAR
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-toggle"
+          (click)="toggleValve()"
+        >
+          <app-icon name="swap-horizontal"></app-icon>
+          ALTERNAR
+        </button>
+      </div>
+    </div>
+
+    <!-- Delete Device Button -->
+    <button
+      type="button"
+      class="btn btn-block btn-danger delete-device-btn"
+      [class.confirm-mode]="confirmDeleteMode"
+      (click)="confirmDeleteMode ? confirmDeleteDevice() : deleteDevice()"
+      [disabled]="deleting"
+    >
+      <app-icon
+        *ngIf="!deleting"
+        name="trash"
+      ></app-icon>
+
+      <span
+        *ngIf="deleting"
+        class="btn-spinner"
+        aria-hidden="true"
+      ></span>
+
+      <span>
+        {{
+          deleting
+            ? 'Excluindo...'
+            : confirmDeleteMode
+              ? 'CONFIRMAR EXCLUSÃO'
+              : 'EXCLUIR DISPOSITIVO'
+        }}
+      </span>
+    </button>
+
+    <button
+      *ngIf="confirmDeleteMode && !deleting"
+      type="button"
+      class="btn btn-block btn-cancel-delete"
+      (click)="cancelDeleteDevice()"
+    >
+      CANCELAR EXCLUSÃO
+    </button>
+
+    <!-- Back Button -->
+    <button
+      type="button"
+      class="btn btn-block btn-outline"
+      (click)="goBack()"
+    >
+      <app-icon name="arrow-back"></app-icon>
+      VOLTAR
+    </button>
+  </div>
+</div>

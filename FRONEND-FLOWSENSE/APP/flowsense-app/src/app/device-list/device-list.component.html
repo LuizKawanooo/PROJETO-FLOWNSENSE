@@ -1,0 +1,98 @@
+<div class="device-list-container">
+  <!-- Decorative shapes -->
+  <div class="shape shape-top-left"></div>
+  <div class="shape shape-top-blob"></div>
+  <div class="shape shape-circle-1"></div>
+  <div class="shape shape-circle-2"></div>
+  <div class="shape shape-blob-bottom-left"></div>
+
+  <!-- Main content -->
+  <div class="content-wrapper">
+
+    <!-- Header with profile and logout -->
+    <div class="header-actions">
+      <button class="profile-btn" aria-label="Go to profile" (click)="onProfileClick()">
+        <img src="assets/icon/avatar.png" alt="Profile" class="avatar" />
+      </button>
+
+      <button class="logout-btn" (click)="onLogout()">Sair</button>
+    </div>
+
+    <!-- Title -->
+    <h1 class="page-title">Dispositivos Encontrados</h1>
+
+    <!-- Loading -->
+    <div class="empty-state" *ngIf="loading">
+      <h2>Buscando dispositivos...</h2>
+      <p>Aguarde enquanto carregamos seus sensores.</p>
+    </div>
+
+    <!-- Devices list -->
+    <div class="devices-container" *ngIf="!loading && devices.length > 0">
+
+      <div
+        class="device-item sensor-card"
+        *ngFor="let device of devices; let i = index"
+        (click)="openDevice(device)"
+      >
+        <div class="sensor-number">
+          {{ i + 1 }}
+        </div>
+
+        <div class="device-icon">
+          <app-icon name="water"></app-icon>
+        </div>
+
+        <div class="device-info">
+          <div class="device-header-row">
+            <h3 class="device-name">{{ device.name }}</h3>
+
+            <span class="sensor-id">
+              ID {{ getDeviceSensorId(device) }}
+            </span>
+          </div>
+
+          <p class="device-ip">{{ device.ip }}</p>
+
+          <div
+            class="device-status"
+            [ngClass]="{ 'online': device.online, 'offline': !device.online }"
+          >
+            <span class="status-dot"></span>
+            {{ device.online ? 'Online' : 'Offline' }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" *ngIf="!loading && devices.length === 0">
+      <h2>Nenhum dispositivo encontrado</h2>
+
+      <p>
+        Você ainda não possui dispositivos cadastrados nesta conta.
+      </p>
+
+      <p>
+        Para configurar um novo ESP32, conecte-se ao Wi-Fi do dispositivo:
+      </p>
+
+      <code class="wifi-ssid">FlowSense_Config</code>
+
+      <button class="btn btn-primary" (click)="openWifiConfig()">
+        Configurar novo dispositivo
+      </button>
+
+      <button class="btn btn-outline" (click)="loadDevices()">
+        Atualizar lista
+      </button>
+    </div>
+
+    <!-- FAB button -->
+    <button class="fab" aria-label="Scan for devices" (click)="loadDevices()">
+      <app-icon name="search"></app-icon>
+    </button>
+
+  </div>
+</div>
